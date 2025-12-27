@@ -109,6 +109,11 @@ static inline void ether_addr_copy(u8 *dst, const u8 *src)
 }
 #endif
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
+#define timer_container_of(x) from_timer(x)
+#define timer_delete_sync(x) del_timer_sync(x)
+#endif
+
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,15)
 #define setup_timer(_timer, _function, _data) \
 do { \
