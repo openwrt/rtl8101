@@ -64,6 +64,8 @@ ifneq ($(KERNELRELEASE),)
 	ifeq ($(CONFIG_CTAP_SHORT_OFF), y)
 		EXTRA_CFLAGS += -DCONFIG_CTAP_SHORT_OFF
 	endif
+
+	ccflags-y += $(EXTRA_CFLAGS)
 else
 	BASEDIR := /lib/modules/$(shell uname -r)
 	KERNELDIR ?= $(BASEDIR)/build
